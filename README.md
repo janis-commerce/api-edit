@@ -1,5 +1,8 @@
 # API Edit
 
+[![Build Status](https://travis-ci.org/janis-commerce/api-edit.svg?branch=master)](https://travis-ci.org/janis-commerce/api-edit)
+[![Coverage Status](https://coveralls.io/repos/github/janis-commerce/api-edit/badge.svg?branch=master)](https://coveralls.io/github/janis-commerce/api-edit?branch=master)
+
 A package to handle JANIS Views Edit APIs
 
 ## Installation
