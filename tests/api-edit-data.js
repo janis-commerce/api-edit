@@ -98,7 +98,7 @@ describe('ApiEditData', () => {
 
 		it('Should set a 404 code and return a message if record is not found', async () => {
 
-			const getFake = sandbox.fake.returns(null);
+			const getFake = sandbox.fake.returns([]);
 			const controllerStub = sandbox.stub(Controller, 'getInstance');
 			controllerStub.returns({
 				get: getFake
@@ -132,7 +132,7 @@ describe('ApiEditData', () => {
 				foo: 'bar'
 			};
 
-			const getFake = sandbox.fake.returns(dbRecord);
+			const getFake = sandbox.fake.returns([dbRecord]);
 			const controllerStub = sandbox.stub(Controller, 'getInstance');
 			controllerStub.returns({
 				get: getFake
@@ -156,7 +156,7 @@ describe('ApiEditData', () => {
 			});
 		});
 
-		it('Should set response body with the formatted record if no format method is defined', async () => {
+		it('Should set response body with the formatted record if format method is defined', async () => {
 
 			class MyApiEditData extends ApiEditData {
 				format(record) {
@@ -178,7 +178,7 @@ describe('ApiEditData', () => {
 				moreFoo: 'baz'
 			};
 
-			const getFake = sandbox.fake.returns(dbRecord);
+			const getFake = sandbox.fake.returns([dbRecord]);
 			const controllerStub = sandbox.stub(Controller, 'getInstance');
 			controllerStub.returns({
 				get: getFake
