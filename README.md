@@ -1,4 +1,4 @@
-# api-edit
+# API Edit
 
 A package to handle JANIS Views Edit APIs
 
@@ -12,8 +12,20 @@ npm install @janiscommerce/api-edit
 
 ## Usage
 ```js
-const ApiEditData = require('@janiscommerce/api-edit');
+'use strict';
 
+const { ApiEditData } = require('@janiscommerce/api-edit');
+
+class MyApiEditData extends ApiEditData {
+
+	async format(record) {
+		return {
+			...record,
+			oneMoreField: true
+		};
+	}
+
+}
+
+module.exports = MyApiEditData;
 ```
-
-## Examples

@@ -1,5 +1,7 @@
 'use strict';
 
-const { ApiEdit } = require('./lib');
+const { ApiEditData } = require('./lib');
 
-module.exports = ApiEdit;
+module.exports = {
+	ApiEditData
+};
