@@ -119,7 +119,9 @@ describe('ApiEditData', () => {
 
 			sandbox.assert.calledOnce(getFake);
 			sandbox.assert.calledWithExactly(getFake, {
-				id: 10,
+				filters: {
+					id: 10
+				},
 				page: 1,
 				limit: 1
 			});
@@ -150,7 +152,9 @@ describe('ApiEditData', () => {
 
 			sandbox.assert.calledOnce(getFake);
 			sandbox.assert.calledWithExactly(getFake, {
-				id: 10,
+				filters: {
+					id: 10
+				},
 				page: 1,
 				limit: 1
 			});
@@ -196,7 +200,9 @@ describe('ApiEditData', () => {
 
 			sandbox.assert.calledOnce(getFake);
 			sandbox.assert.calledWithExactly(getFake, {
-				id: 10,
+				filters: {
+					id: 10
+				},
 				page: 1,
 				limit: 1
 			});
