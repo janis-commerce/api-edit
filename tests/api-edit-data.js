@@ -1,7 +1,6 @@
 'use strict';
 
 const assert = require('assert');
-const { Controller } = require('@janiscommerce/model-controller');
 
 const sandbox = require('sinon').createSandbox();
 
@@ -44,23 +43,20 @@ describe('ApiEditData', () => {
 
 		it('Should throw if controller is not found', () => {
 
-			const controllerStub = sandbox.stub(Controller, 'getInstance');
-			controllerStub.throws('Controller does not exist');
+			const getModelInstanceFake = sandbox.stub(ApiEditData.prototype, '_getModelInstance');
+			getModelInstanceFake.throws('Model does not exist');
 
 			const apiEditData = new ApiEditData();
 			apiEditData.entity = 'some-entity';
 			apiEditData.pathParameters = [10];
 
 			assert.throws(() => apiEditData.validate(), ApiEditError);
-
-			sandbox.assert.calledOnce(controllerStub);
-			sandbox.assert.calledWithExactly(controllerStub, 'some-entity');
 		});
 
 		it('Should validate if a valid controller and ID is passed', () => {
 
-			const controllerStub = sandbox.stub(Controller, 'getInstance');
-			controllerStub.returns({});
+			const getModelInstanceFake = sandbox.stub(ApiEditData.prototype, '_getModelInstance');
+			getModelInstanceFake.returns({});
 
 			const apiEditData = new ApiEditData();
 			apiEditData.entity = 'some-entity';
@@ -69,9 +65,6 @@ describe('ApiEditData', () => {
 			const validation = apiEditData.validate();
 
 			assert.strictEqual(validation, undefined);
-
-			sandbox.assert.calledOnce(controllerStub);
-			sandbox.assert.calledWithExactly(controllerStub, 'some-entity');
 		});
 
 	});
@@ -80,8 +73,8 @@ describe('ApiEditData', () => {
 
 		it('Should throw an internal error if get fails', async () => {
 
-			const controllerStub = sandbox.stub(Controller, 'getInstance');
-			controllerStub.returns({
+			const getModelInstanceFake = sandbox.stub(ApiEditData.prototype, '_getModelInstance');
+			getModelInstanceFake.returns({
 				get: () => {
 					throw new Error('Some internal error');
 				}
@@ -99,8 +92,8 @@ describe('ApiEditData', () => {
 		it('Should set a 404 code and return a message if record is not found', async () => {
 
 			const getFake = sandbox.fake.returns([]);
-			const controllerStub = sandbox.stub(Controller, 'getInstance');
-			controllerStub.returns({
+			const getModelInstanceFake = sandbox.stub(ApiEditData.prototype, '_getModelInstance');
+			getModelInstanceFake.returns({
 				get: getFake
 			});
 
@@ -135,8 +128,8 @@ describe('ApiEditData', () => {
 			};
 
 			const getFake = sandbox.fake.returns([dbRecord]);
-			const controllerStub = sandbox.stub(Controller, 'getInstance');
-			controllerStub.returns({
+			const getModelInstanceFake = sandbox.stub(ApiEditData.prototype, '_getModelInstance');
+			getModelInstanceFake.returns({
 				get: getFake
 			});
 
@@ -183,8 +176,8 @@ describe('ApiEditData', () => {
 			};
 
 			const getFake = sandbox.fake.returns([dbRecord]);
-			const controllerStub = sandbox.stub(Controller, 'getInstance');
-			controllerStub.returns({
+			const getModelInstanceFake = sandbox.stub(ApiEditData.prototype, '_getModelInstance');
+			getModelInstanceFake.returns({
 				get: getFake
 			});
 

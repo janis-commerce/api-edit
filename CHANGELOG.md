@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.0.0] - 2019-07-18
+### Changed
+- Browse APIs paths changed. Now MS_PATH env var is taken into account.
+
 ## [1.0.2] - 2019-07-17
 ### Fixed
 - ID filter is now properly passed to model
